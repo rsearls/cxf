@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+   <modelVersion>4.0.0</modelVersion>
+   <groupId>org.apache.cxf</groupId>
+   <artifactId>jakarta-bom</artifactId>
+   <version>3.5.0-SNAPSHOT</version>
+   <packaging>pom</packaging>
+   <name>Jarkata dependencies BOM</name>
+   <description>Jarkata dependencies BOM</description>
+
+   <properties>
+      <version.jakarta.transaction.jakarta.transaction-api>2.0.0</version.jakarta.transaction.jakarta.transaction-api>
+      <version.jakarta.resource.jakarta.resource-api>2.0.0</version.jakarta.resource.jakarta.resource-api>
+   </properties>
+
+   <dependencyManagement>
+      <dependencies>
+         <!--  -->
+         <dependency>
+            <groupId>jakarta.platform</groupId>
+            <artifactId>jakarta.jakartaee-api</artifactId>
+            <version>9.1.0</version>
+         </dependency>
+         <dependency>
+            <groupId>jakarta.activation</groupId>
+            <artifactId>jakarta.activation-api</artifactId>
+            <version>2.0.0</version>
+         </dependency>
+         <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <version>2.3.3</version>
+         </dependency>
+         <dependency>
+            <groupId>jakarta.resource</groupId>
+            <artifactId>jakarta.resource-api</artifactId>
+            <version>${version.jakarta.resource.jakarta.resource-api}</version>
+         </dependency>
+         <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <version>${version.jakarta.transaction.jakarta.transaction-api}</version>
+         </dependency>
+      </dependencies>
+   </dependencyManagement>
+</project>
