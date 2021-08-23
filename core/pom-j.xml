@@ -524,6 +524,8 @@
                                             <arg value="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar"/>
                                             <arg value="-q"/>
                                             <arg value="-o"/>
+                                            <arg value="-tb"/>
+                                            <arg value="../rules/jakarta-bundles.properties"/>
                                             <classpath>
                                                 <pathelement path="${plugin_classpath}"/>
                                             </classpath>
