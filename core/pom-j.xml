@@ -217,6 +217,10 @@
             <artifactId>xercesImpl</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>jakarta.xml.ws</groupId>
+            <artifactId>jakarta.xml.ws-api</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
@@ -329,47 +333,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <!-- generate a sources JAR for transformation -->
-            <!-- ####
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <phase>initialize</phase>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            #### -->
-            <!-- generate a javadoc JAR for transformation -->
-            <!-- ####
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <sourcepath>${project.basedir}/src/main/java;${project.build.directory}/generated-sources/cxf-xjc-plugin</sourcepath>
-                    <detectOfflineLinks>false</detectOfflineLinks>
-                    <header>Apache CXF API</header>
-                    <footer>Apache CXF API</footer>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>attach-javadoc</id>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-             #### -->
-<!-- ## rls ## -->
-
         </plugins>
         <pluginManagement>
             <plugins>
@@ -460,6 +423,11 @@
         -->
         <profile>
             <id>transform</id>
+            <activation>
+                <property>
+                    <name>!notransform</name>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <!-- generate a sources JAR for transformation -->
