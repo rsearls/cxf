@@ -1,0 +1,497 @@
+<?xml version="1.0"?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements. See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership. The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License. You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied. See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>cxf-rt-ws-security</artifactId>
+    <packaging>bundle</packaging>
+    <name>Apache CXF Runtime WS Security</name>
+    <description>Apache CXF Runtime WS Security</description>
+    <url>https://cxf.apache.org</url>
+    <parent>
+        <groupId>org.apache.cxf</groupId>
+        <artifactId>cxf-parent</artifactId>
+        <version>3.5.0-SNAPSHOT</version>
+        <relativePath>../../../parent/pom.xml</relativePath>
+    </parent>
+    <properties>
+        <cxf.module.name>org.apache.cxf.ws.security</cxf.module.name>
+        <cxf.osgi.import>
+            javax.xml.soap;version="${cxf.osgi.saaj.version}",
+            javax.jws*;version="${cxf.osgi.jws.version}",
+            javax.activation;version="${cxf.osgi.javax.activation.version}",
+            org.ehcache*;resolution:=optional;version="[3.0.0, 4.0.0)",
+            org.opensaml*;version="${cxf.opensaml.osgi.version.range}",
+            javax.xml.ws*;version="${cxf.osgi.javax.xml.ws.version}",
+            javax.xml.bind*;version="${cxf.osgi.javax.bind.version}",
+            javax.annotation*;version="${cxf.osgi.javax.annotation.version}"
+        </cxf.osgi.import>
+        <classifier.jakarta>jakarta</classifier.jakarta>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-core</artifactId>
+            <version>${project.version}</version>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-bindings-soap</artifactId>
+            <version>${project.version}</version>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-security-saml</artifactId>
+            <version>${project.version}</version>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-addr</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-policy</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-mex</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.woodstox</groupId>
+            <artifactId>woodstox-core</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${cxf.ehcache3.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wss4j</groupId>
+            <artifactId>wss4j-ws-security-dom</artifactId>
+            <exclusions>
+                 <exclusion>
+                     <groupId>org.codehaus.woodstox</groupId>
+                     <artifactId>woodstox-core-asl</artifactId>
+                 </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wss4j</groupId>
+            <artifactId>wss4j-policy</artifactId>
+            <exclusions>
+                 <exclusion>
+                     <groupId>org.codehaus.woodstox</groupId>
+                     <artifactId>woodstox-core-asl</artifactId>
+                 </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wss4j</groupId>
+            <artifactId>wss4j-ws-security-stax</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.wss4j</groupId>
+            <artifactId>wss4j-ws-security-policy-stax</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-jdk14</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>${project.version}</version>
+            <optional>true</optional>
+            <classifier>jakarta</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-local</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-testutils</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-features-logging</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.easymock</groupId>
+            <artifactId>easymock</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-xjc-plugin</artifactId>
+                <version>${cxf.xjc-utils.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>xsdtojava</goal>
+                        </goals>
+                        <configuration>
+                            <fork>${cxf.xjcplugin.forkmode}</fork>
+                            <additionalJvmArgs>${cxf.xjc.jvmArgs}</additionalJvmArgs>
+                            <extensions>
+                                <extension>org.apache.cxf.xjcplugins:cxf-xjc-dv:${cxf.xjc-utils.version}</extension>
+                            </extensions>
+                            <sourceRoot>${basedir}/target/generated/src/main/java</sourceRoot>
+                            <xsdOptions>
+                                <xsdOption>
+                                    <extension>true</extension>
+                                    <xsd>${basedir}/src/main/model/ws-trust-1.3.xsd</xsd>
+                                    <bindingFiles>
+                                        <bindingFile>${basedir}/src/main/model/binding.xjb</bindingFile>
+                                        <bindingFile>${basedir}/src/main/model/xmlsig.xjb</bindingFile>
+                                    </bindingFiles>
+                                    <extensionArgs>
+                                        <extensionArg>-Xdv</extensionArg>
+                                    </extensionArgs>
+                                </xsdOption>
+                                <xsdOption>
+                                    <extension>true</extension>
+                                    <xsd>${basedir}/src/main/model/ws-trust-1.4.xsd</xsd>
+                                    <bindingFile>${basedir}/src/main/model/binding14.xjb</bindingFile>
+                                    <extensionArgs>
+                                        <extensionArg>-Xdv</extensionArg>
+                                    </extensionArgs>
+                                </xsdOption>
+                            </xsdOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <!-- ############### byte code jakarta transformation ######################### -->
+        <!-- On the original JAR perform a byte code transformation.
+             Replace appropriate import names javax with jakarta. Assign classifier,
+             "-jakarta" to the newly created JAR file.
+             On the archive's sources and javadoc archives perform similar text replacement
+             and classify each JAR with "-sources-jakarta" and "-javadoc-jakarta"
+             respectively.
+          -->
+        <profile>
+            <id>transform</id>
+            <activation>
+                <property>
+                    <name>!notransform</name>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <!-- generate a sources JAR for transformation -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <phase>initialize</phase>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- generate a javadoc JAR for transformation -->
+                    <!-- ############## rls
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <version>3.3.0</version>
+                        <configuration>
+                            <sourcepath>
+                                ${project.basedir}/src/main/java;${project.build.directory}/generated-sources/cxf-xjc-plugin
+                            </sourcepath>
+                            <detectOfflineLinks>false</detectOfflineLinks>
+                            <header>Apache CXF API</header>
+                            <footer>Apache CXF API</footer>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>attach-javadoc</id>
+                                <phase>process-sources</phase>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    rls ############## -->
+
+                    <!-- byte code transform original JAR -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.1.0</version>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>transform-jar</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <property name="plugin_classpath" refid="maven.plugin.classpath"/>
+                                        <java classname="org.eclipse.transformer.jakarta.JakartaTransformer">
+                                            <arg value="${project.build.directory}/${project.artifactId}-${project.version}.jar"/>
+                                            <arg value="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar"/>
+                                            <arg value="-q"/>
+                                            <arg value="-o"/>
+                                            <arg value="-tb"/>
+                                            <arg value="${project.basedir}/../../../rules/jakarta-bundles.properties"/>
+                                            <classpath>
+                                                <pathelement path="${plugin_classpath}"/>
+                                            </classpath>
+                                        </java>
+                                    </target>
+                                </configuration>
+                            </execution>
+                            <!-- transform source archive text -->
+                            <execution>
+                                <id>transform-sources-jar</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <property name="plugin_classpath" refid="maven.plugin.classpath"/>
+                                        <java classname="org.eclipse.transformer.jakarta.JakartaTransformer">
+                                            <arg value="${project.build.directory}/${project.artifactId}-${project.version}-sources.jar"/>
+                                            <arg value="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar"/>
+                                            <arg value="-q"/>
+                                            <arg value="-o"/>
+                                            <classpath>
+                                                <pathelement path="${plugin_classpath}"/>
+                                            </classpath>
+                                        </java>
+                                    </target>
+                                </configuration>
+                            </execution>
+                            <!-- transform javadoc archive text -->
+                            <execution>
+                                <id>transform-javadoc</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <property name="plugin_classpath" refid="maven.plugin.classpath"/>
+                                        <java classname="org.eclipse.transformer.jakarta.JakartaTransformer">
+                                            <arg value="${project.build.directory}/${project.artifactId}-${project.version}-javadoc.jar"/>
+                                            <arg value="${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar"/>
+                                            <arg value="-q"/>
+                                            <arg value="-o"/>
+                                            <arg value="-tf"/>
+                                            <arg value="${project.basedir}/../../../rules/jakarta-text-master.properties"/>
+                                            <classpath>
+                                                <pathelement path="${plugin_classpath}"/>
+                                            </classpath>
+                                        </java>
+                                    </target>
+                                </configuration>
+                            </execution>
+                            <!-- forcefully update the archive POM file with one that
+                                 contains the proper archive classifier
+                             -->
+                            <execution>
+                                <id>update-pom</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <mkdir dir="${project.build.directory}/original"/>
+                                        <unjar dest="${project.build.directory}/original"
+                                               src="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar"/>
+                                        <copy file="${project.basedir}/src/main/jakarta-resources/pom.xml-jakarta"
+                                              tofile="${project.build.directory}/original/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                              overwrite="true"/>
+                                        <move file="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar"
+                                              tofile="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar-ORIG"/>
+                                        <jar basedir="${project.build.directory}/original"
+                                             destfile="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar"/>
+
+                                        <mkdir dir="${project.build.directory}/original-sources"/>
+                                        <unjar dest="${project.build.directory}/original-sources"
+                                               src="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar"/>
+                                        <copy file="${project.basedir}/src/main/jakarta-resources/pom.xml-jakarta"
+                                              tofile="${project.build.directory}/original-sources/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                              overwrite="true"/>
+                                        <move file="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar"
+                                              tofile="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar-ORIG"/>
+                                        <jar basedir="${project.build.directory}/original-sources"
+                                             destfile="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar"/>
+                                        <!-- ##
+                                        <mkdir dir="${project.build.directory}/original-javadoc"/>
+                                        <unjar dest="${project.build.directory}/original-javadoc"
+                                               src="${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar"/>
+                                        <copy file="${project.basedir}/src/main/jakarta-resources/pom.xml-jakarta"
+                                              tofile="${project.build.directory}/original-javadoc/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                              overwrite="true"/>
+                                        <move file="${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar"
+                                              tofile="${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar-ORIG"/>
+                                        <jar basedir="${project.build.directory}/original-javadoc"
+                                             destfile="${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar"/>
+                                        ## -->
+                                    </target>
+                                </configuration>
+                            </execution>
+                        </executions>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.eclipse.transformer</groupId>
+                                <artifactId>org.eclipse.transformer.cli</artifactId>
+                                <version>0.2.0</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>ant-contrib</groupId>
+                                <artifactId>ant-contrib</artifactId>
+                                <version>1.0b3</version>
+                                <exclusions>
+                                    <exclusion>
+                                        <groupId>ant</groupId>
+                                        <artifactId>ant</artifactId>
+                                    </exclusion>
+                                </exclusions>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+
+                    <!-- Install transformed archive into local repo -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-install-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>local-install-cxf-core-jakarta</id>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <phase>install</phase>
+                                <configuration>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <classifier>${classifier.jakarta}</classifier>
+                                    <packaging>jar</packaging>
+                                    <file>${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar</file>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>local-install-cxf-core-sources-jakarta</id>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <phase>install</phase>
+                                <configuration>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <classifier>sources-${classifier.jakarta}</classifier>
+                                    <packaging>jar</packaging>
+                                    <file>${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar</file>
+                                </configuration>
+                            </execution>
+                            <!-- ######## rls
+                            <execution>
+                                <id>local-install-cxf-core-javadoc-jakarta</id>
+                                <goals>
+                                    <goal>install-file</goal>
+                                </goals>
+                                <phase>install</phase>
+                                <configuration>
+                                    <groupId>${project.groupId}</groupId>
+                                    <artifactId>${project.artifactId}</artifactId>
+                                    <version>${project.version}</version>
+                                    <classifier>javadoc-${classifier.jakarta}</classifier>
+                                    <packaging>jar</packaging>
+                                    <file>${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar</file>
+                                </configuration>
+                            </execution>
+                            rls ######## -->
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

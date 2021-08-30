@@ -194,7 +194,52 @@
                                     </target>
                                 </configuration>
                             </execution>
+                            <!-- forcefully update the archive POM file with one that
+                                 contains the proper archive classifier
+                             -->
+                            <execution>
+                                <id>update-pom</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <target>
+                                        <mkdir dir="${project.build.directory}/original"/>
+                                        <unjar dest="${project.build.directory}/original"
+                                               src="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar"/>
+                                        <copy file="${project.basedir}/src/main/jakarta-resources/pom.xml-jakarta"
+                                              tofile="${project.build.directory}/original/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                              overwrite="true"/>
+                                        <move file="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar"
+                                              tofile="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar-ORIG"/>
+                                        <jar basedir="${project.build.directory}/original"
+                                             destfile="${project.build.directory}/${project.artifactId}-${project.version}-${classifier.jakarta}.jar"/>
 
+                                        <mkdir dir="${project.build.directory}/original-sources"/>
+                                        <unjar dest="${project.build.directory}/original-sources"
+                                               src="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar"/>
+                                        <copy file="${project.basedir}/src/main/jakarta-resources/pom.xml-jakarta"
+                                              tofile="${project.build.directory}/original-sources/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                              overwrite="true"/>
+                                        <move file="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar"
+                                              tofile="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar-ORIG"/>
+                                        <jar basedir="${project.build.directory}/original-sources"
+                                             destfile="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar"/>
+
+                                        <mkdir dir="${project.build.directory}/original-javadoc"/>
+                                        <unjar dest="${project.build.directory}/original-javadoc"
+                                               src="${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar"/>
+                                        <copy file="${project.basedir}/src/main/jakarta-resources/pom.xml-jakarta"
+                                              tofile="${project.build.directory}/original-javadoc/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"
+                                              overwrite="true"/>
+                                        <move file="${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar"
+                                              tofile="${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar-ORIG"/>
+                                        <jar basedir="${project.build.directory}/original-javadoc"
+                                             destfile="${project.build.directory}/${project.artifactId}-${project.version}-javadoc-${classifier.jakarta}.jar"/>
+                                    </target>
+                                </configuration>
+                            </execution>
                         </executions>
                         <dependencies>
                             <dependency>
