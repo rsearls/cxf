@@ -491,6 +491,8 @@
                                             <arg value="-o"/>
                                             <arg value="-tb"/>
                                             <arg value="${project.basedir}/../rules/jakarta-bundles.properties"/>
+                                            <arg value="--per-class-constant"/>
+                                            <arg value="${project.basedir}/../rules/jakarta-per-class-constant-master.properties"/>
                                             <classpath>
                                                 <pathelement path="${plugin_classpath}"/>
                                             </classpath>
