@@ -194,7 +194,7 @@ public final class JAXBContextCache {
             if (HAS_MOXY) {
                 map.put("eclipselink.default-target-namespace", defaultNs);
             }
-            map.put("org.glassfish.jaxb.defaultNamespaceRemap", defaultNs);
+            map.put("com.sun.xml.bind.defaultNamespaceRemap", defaultNs);
         }
         if (props != null) {
             map.putAll(props);

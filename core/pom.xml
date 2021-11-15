@@ -491,8 +491,8 @@
                                             <arg value="-o"/>
                                             <arg value="-tb"/>
                                             <arg value="${project.basedir}/../rules/jakarta-bundles.properties"/>
-                                            <arg value="--per-class-constant"/>
-                                            <arg value="${project.basedir}/../rules/jakarta-per-class-constant-master.properties"/>
+                                            <arg value="-td"/>
+                                            <arg value="${project.basedir}/../rules/glassfish.properties"/>
                                             <classpath>
                                                 <pathelement path="${plugin_classpath}"/>
                                             </classpath>
@@ -515,6 +515,8 @@
                                             <arg value="${project.build.directory}/${project.artifactId}-${project.version}-sources-${classifier.jakarta}.jar"/>
                                             <arg value="-q"/>
                                             <arg value="-o"/>
+                                            <arg value="--direct"/>
+                                            <arg value="${project.basedir}/../rules/glassfish.properties"/>
                                             <classpath>
                                                 <pathelement path="${plugin_classpath}"/>
                                             </classpath>
