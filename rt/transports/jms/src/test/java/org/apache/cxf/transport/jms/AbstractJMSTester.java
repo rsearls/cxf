@@ -31,7 +31,7 @@ import javax.xml.namespace.QName;
 
 import jakarta.jms.ConnectionFactory;
 import jakarta.jms.DeliveryMode;
-import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.apache.activemq.broker.BrokerService;
 import org.apache.activemq.store.memory.MemoryPersistenceAdapter;
 import org.apache.cxf.Bus;

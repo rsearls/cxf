@@ -83,6 +83,7 @@
         <cxf.arquillian.weld.container.version>2.0.1.Final</cxf.arquillian.weld.container.version>
         <cxf.aspectj.version>1.9.1</cxf.aspectj.version>
         <cxf.assertj.version>3.22.0</cxf.assertj.version>
+        <cxf.artemis-jakarta-client.version>2.21.0-SNAPSHOT</cxf.artemis-jakarta-client.version>
         <cxf.atmosphere.version.range>[2,3.0)</cxf.atmosphere.version.range>
         <cxf.atmosphere.version>2.7.3</cxf.atmosphere.version>
         <cxf.bcprov.version>1.70</cxf.bcprov.version>
@@ -229,7 +230,10 @@
         <cxf.woodstox.core.version>6.2.7</cxf.woodstox.core.version>
         <cxf.woodstox.stax2-api.version>4.2.1</cxf.woodstox.stax2-api.version>
         <cxf.wsdl4j.version>1.6.3</cxf.wsdl4j.version>
+        <!-- rls
         <cxf.wss4j.version>2.4.1</cxf.wss4j.version>
+        -->
+        <cxf.wss4j.version>3.0.0-SNAPSHOT</cxf.wss4j.version>
         <cxf.xalan.version>2.7.2</cxf.xalan.version>
         <cxf.xerces.version>2.12.2</cxf.xerces.version>
         <cxf.xmlschema.version>2.3.0</cxf.xmlschema.version>
@@ -1689,6 +1693,11 @@
                 <groupId>org.apache.activemq</groupId>
                 <artifactId>activemq-client</artifactId>
                 <version>${cxf.activemq.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>artemis-jakarta-client</artifactId>
+                <version>${cxf.artemis-jakarta-client.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.activemq</groupId>
