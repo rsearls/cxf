@@ -31,7 +31,9 @@
         <relativePath>../../parent</relativePath>
     </parent>
     <modules>
+        <!-- rls
         <module>compatible</module>
+        -->
         <module>servlet-compatible</module>
     </modules>
 </project>

@@ -31,9 +31,13 @@
     </parent>
     <modules>
         <module>bundle</module>
+        <!-- rls
         <module>itests</module>
+        -->
         <module>itests-felix</module>
         <module>karaf</module>
+        <!-- rls
         <module>repository</module>
+        -->
     </modules>
 </project>

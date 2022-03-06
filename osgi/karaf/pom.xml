@@ -31,6 +31,8 @@
     <description>Apache CXF Karaf Parent</description>
     <modules>
         <module>commands</module>
+        <!-- rls
         <module>features</module>
+        -->
     </modules>
 </project>

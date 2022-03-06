@@ -37,7 +37,9 @@
         <module>features</module>
         <module>frontend</module>
         <module>ws</module>
+        <!-- todo rls added from Jim
         <module>rs</module>
+        -->
         <module>management</module>
         <module>javascript</module>
         <module>security</module>

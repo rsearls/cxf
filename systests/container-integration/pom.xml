@@ -33,6 +33,8 @@
     <url>https://cxf.apache.org</url>
     <modules>
         <module>webapp</module>
+        <!--
         <module>grizzly</module>
+        -->
     </modules>
 </project>

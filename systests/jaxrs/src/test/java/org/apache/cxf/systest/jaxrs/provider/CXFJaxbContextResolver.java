@@ -27,7 +27,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.net.URL;
 
-import javax.xml.bind.Validator;
+import jakarta.xml.bind.Validator;
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLEventWriter;

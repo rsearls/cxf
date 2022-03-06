@@ -35,7 +35,9 @@
         <module>security</module>
         <module>rm</module>
         <module>mex</module>
+        <!-- todo rls added from Jim
         <module>eventing</module>
+        -->
         <module>transfer</module>
     </modules>
 </project>

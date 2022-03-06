@@ -38,8 +38,12 @@
         <module>http-hc5</module>
         <module>http-netty/netty-server</module>
         <module>http-netty/netty-client</module>
+        <!-- todo rls added from Jim
         <module>jms</module>
+        -->
         <module>udp</module>
+        <!-- todo rls added from Jim
         <module>websocket</module>
+        -->
     </modules>
 </project>

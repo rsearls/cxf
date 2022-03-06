@@ -34,7 +34,9 @@
         <module>frontend/jaxws</module>
         <module>frontend/javascript</module>
         <module>databinding/jaxb</module>
+        <!-- rls
         <module>test</module>
         <module>misc</module>
+        -->
     </modules>
 </project>

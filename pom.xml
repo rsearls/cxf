@@ -173,7 +173,9 @@
         <module>maven-plugins</module>
         <module>services</module>
         <module>osgi</module>
+        <!-- rls
         <module>systests</module>
+        -->
     </modules>
     <profiles>
         <profile>
@@ -517,7 +519,15 @@
                         <maxmem>256M</maxmem>
                         <fork>${cxf.compiler.fork}</fork>
                         <encoding>UTF-8</encoding>
-                        
+                        <!-- todo rls added from JIM -->
+                        <!--compilerId>javac-with-errorprone</compilerId>
+                        <forceJavacCompilerUse>true</forceJavacCompilerUse-->
+                        <excludes>
+                            <exclude>**/org/apache/cxf/transport/http/osgi/*.java</exclude>
+                        </excludes>
+                        <testExcludes>
+                            <testExclude>**/org/apache/cxf/transport/http/osgi/*.java</testExclude>
+                        </testExcludes>
                         <!--compilerId>javac-with-errorprone</compilerId>
                         <forceJavacCompilerUse>true</forceJavacCompilerUse-->
                     </configuration>

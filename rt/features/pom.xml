@@ -32,7 +32,9 @@
     <modules>
         <module>clustering</module>
         <module>logging</module>
+        <!-- rls
         <module>metrics</module>
+        -->
         <module>throttling</module>
     </modules>
 </project>
