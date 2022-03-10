@@ -31,6 +31,8 @@
     </parent>
     <modules>
         <module>jose</module>
+        <!-- rls
         <module>jose-jaxrs</module>
+        -->
     </modules>
 </project>

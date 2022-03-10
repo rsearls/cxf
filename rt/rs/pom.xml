@@ -30,11 +30,14 @@
         <version>4.0.0-SNAPSHOT</version>
     </parent>
     <modules>
+        <!-- rls
         <module>client</module>
         <module>http-sci</module>
         <module>description</module>
         <module>description-swagger</module>
+        -->
         <module>extensions/json-basic</module>
+        <!-- rls
         <module>extensions/providers</module>
         <module>extensions/search</module>
         <module>extensions/rx</module>
@@ -42,12 +45,15 @@
         <module>extensions/rx3</module>
         <module>extensions/reactor</module>
         <module>extensions/reactivestreams</module>
+        -->
         <module>security</module>
+        <!--
         <module>sse</module>
         <module>description-openapi-v3</module>
         <module>description-microprofile-openapi</module>
         <module>description-swagger-ui</module>
         <module>microprofile-client</module>
         <module>description-common-openapi</module>
+        -->
     </modules>
 </project>

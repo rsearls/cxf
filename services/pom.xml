@@ -31,8 +31,8 @@
         <version>4.0.0-SNAPSHOT</version>
     </parent>
     <modules>
-        <!-- rls
         <module>sts</module>
+        <!-- rls
         <module>wsn</module>
         -->
         <module>ws-discovery</module>

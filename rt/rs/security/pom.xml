@@ -30,12 +30,16 @@
         <version>4.0.0-SNAPSHOT</version>
     </parent>
     <modules>
+        <!-- rls
         <module>xml</module>
+        -->
         <module>jose-parent</module>
+        <!--
         <module>oauth-parent</module>
         <module>sso/saml</module>
         <module>sso/oidc</module>
         <module>cors</module>
         <module>http-signature</module>
+        -->
     </modules>
 </project>
