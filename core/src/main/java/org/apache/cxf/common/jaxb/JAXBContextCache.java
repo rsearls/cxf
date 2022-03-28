@@ -195,9 +195,9 @@ public final class JAXBContextCache {
                 map.put("eclipselink.default-target-namespace", defaultNs);
             }
             // todo Until the jaxb archive stuff is resolved must NOT use the
-            // jakarta text for defaultNs.  Must use the old style key.
-            //   map.put("org.glassfish.jaxb.defaultNamespaceRemap", defaultNs);
-            map.put("com.sun.xml.bind.defaultNamespaceRemap", defaultNs);
+            // jakarta text for defaultNs.  Must use the old style key.   rls
+            map.put("org.glassfish.jaxb.defaultNamespaceRemap", defaultNs);
+            //map.put("com.sun.xml.bind.defaultNamespaceRemap", defaultNs);
         }
         if (props != null) {
             map.putAll(props);
