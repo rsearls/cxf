@@ -158,7 +158,10 @@
                         <configuration>
                             <obrRepository>NONE</obrRepository>
                             <instructions>
+                                <!-- rls
                                 <Export-Package>org.apache.cxf.management*,org.apache.cxf.tracing*</Export-Package>
+                                -->
+                                <Export-Package>org.apache.cxf.management.annotation*,org.apache.cxf.tracing*</Export-Package>
                             </instructions>
                             <niceManifest>true</niceManifest>
                         </configuration>
