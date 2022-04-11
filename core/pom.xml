@@ -97,6 +97,10 @@
             <optional>true</optional>
         </dependency>
         <dependency>
+            <groupId>org.eclipse.angus</groupId>
+            <artifactId>angus-activation</artifactId>
+        </dependency>
+        <dependency>
             <groupId>${cxf.asm.groupId}</groupId>
             <artifactId>${cxf.asm.artifactId}</artifactId>
             <optional>true</optional>

@@ -132,7 +132,7 @@
         <cxf.jakarta.activation.version>2.0.1</cxf.jakarta.activation.version>
         <cxf.jakarta.injectapi.version>2.0.1</cxf.jakarta.injectapi.version>
         <cxf.jakarta.jwsapi.version>3.0.0</cxf.jakarta.jwsapi.version>
-        <cxf.jakarta.soapapi.version>2.0.1</cxf.jakarta.soapapi.version>
+        <cxf.jakarta.soapapi.version>3.0.0-RC1</cxf.jakarta.soapapi.version>
         <cxf.jakarta.wsapi.version>3.0.1</cxf.jakarta.wsapi.version>
         <cxf.jakarta.jms.version>3.0.0</cxf.jakarta.jms.version>
         <cxf.jakarta.transaction.version>2.0.0</cxf.jakarta.transaction.version>
@@ -143,9 +143,6 @@
         <cxf.javassist.version>3.27.0-GA</cxf.javassist.version>
         <cxf.jakarta.annotation-api.version>2.1.0-B1</cxf.jakarta.annotation-api.version>
         <cxf.jakarta.ws.rs.version>3.0.0</cxf.jakarta.ws.rs.version>
-        <!-- rls
-        <cxf.jaxb.runtime.version>3.0.2</cxf.jaxb.runtime.version>
-        -->
         <cxf.jaxb.runtime.version>4.0.0-M3</cxf.jaxb.runtime.version>
         <cxf.jaxb.version>3.0.1</cxf.jaxb.version>
         <cxf.jaxb.xjc.version>${cxf.jaxb.runtime.version}</cxf.jaxb.xjc.version>
@@ -210,7 +207,7 @@
         <cxf.spring.osgi.version>1.2.1</cxf.spring.osgi.version>
         <cxf.spring.security.version>6.0.0-M1</cxf.spring.security.version>
         <cxf.spring.version>6.0.0-M2</cxf.spring.version>
-        <cxf.stax-ex.version>1.8.3</cxf.stax-ex.version>
+        <cxf.stax-ex.version>2.1.0-M1</cxf.stax-ex.version>
         <cxf.swagger.ui.version>4.5.0</cxf.swagger.ui.version>
         <cxf.swagger.v3.version>2.1.13</cxf.swagger.v3.version>
         <cxf.swagger2.version>1.6.5</cxf.swagger2.version>
@@ -233,9 +230,6 @@
         <cxf.woodstox.core.version>6.2.7</cxf.woodstox.core.version>
         <cxf.woodstox.stax2-api.version>4.2.1</cxf.woodstox.stax2-api.version>
         <cxf.wsdl4j.version>1.6.3</cxf.wsdl4j.version>
-        <!-- rls
-        <cxf.wss4j.version>2.4.1</cxf.wss4j.version>
-        -->
         <cxf.wss4j.version>3.0.0-SNAPSHOT</cxf.wss4j.version>
         <cxf.xalan.version>2.7.2</cxf.xalan.version>
         <cxf.xerces.version>2.12.2</cxf.xerces.version>
@@ -286,6 +280,7 @@
         <cxf.xmlsec.bundle.version>2.3.0</cxf.xmlsec.bundle.version>
         <cxf.xpp3.bundle.version>1.1.4c_6</cxf.xpp3.bundle.version>
         <cxf.awaitility.version>4.1.1</cxf.awaitility.version>
+        <cxf-angus-activation.version>1.0.0</cxf-angus-activation.version>
     </properties>
     <build>
         <resources>
@@ -770,6 +765,12 @@
                 <groupId>jakarta.xml.bind</groupId>
                 <artifactId>jakarta.xml.bind-api</artifactId>
                 <version>${cxf.jaxb.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.sun.activation</groupId>
+                        <artifactId>jakarta.activation</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.apache.aries.blueprint</groupId>
@@ -1144,6 +1145,11 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-log4j12</artifactId>
                 <version>${cxf.slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.eclipse.angus</groupId>
+                <artifactId>angus-activation</artifactId>
+                <version>${cxf-angus-activation.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.eclipse.jetty</groupId>
@@ -1630,6 +1636,11 @@
                 <version>${cxf.jaxb.runtime.version}</version>
             </dependency>
             <dependency>
+                <groupId>jakarta.activation</groupId>
+                <artifactId>jakarta.activation-api</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+            <dependency>
                 <groupId>jakarta.annotation</groupId>
                 <artifactId>jakarta.annotation-api</artifactId>
                 <version>${cxf.jakarta.annotation-api.version}</version>
@@ -1658,6 +1669,12 @@
                 <groupId>com.sun.mail</groupId>
                 <artifactId>jakarta.mail</artifactId>
                 <version>${cxf.jakarta.mail.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.sun.activation</groupId>
+                        <artifactId>jakarta.activation</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>jakarta.management.j2ee</groupId>
@@ -2246,20 +2263,20 @@
                     <version>${cxf.jakarta.jwsapi.version}</version>
                 </dependency>
                 <dependency>
-                    <groupId>jakarta.xml.soap</groupId>
-                    <artifactId>jakarta.xml.soap-api</artifactId>
-                    <version>${cxf.jakarta.soapapi.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>com.sun.activation</groupId>
-                    <artifactId>jakarta.activation</artifactId>
-                    <version>${cxf.jakarta.activation.version}</version>
-                </dependency>
-                <dependency>
                     <groupId>com.sun.xml.messaging.saaj</groupId>
                     <artifactId>saaj-impl</artifactId>
                     <version>${cxf.saaj-impl.version}</version>
                     <scope>runtime</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.jvnet.staxex</groupId>
+                            <artifactId>stax-ex</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>com.sun.activation</groupId>
+                            <artifactId>jakarta.activation</artifactId>
+                        </exclusion>
+                    </exclusions>
                 </dependency>
                 <dependency>
                     <groupId>org.jacorb</groupId>
