@@ -83,7 +83,7 @@
         <cxf.arquillian.weld.container.version>2.0.1.Final</cxf.arquillian.weld.container.version>
         <cxf.aspectj.version>1.9.1</cxf.aspectj.version>
         <cxf.assertj.version>3.22.0</cxf.assertj.version>
-        <cxf.artemis-jakarta-client.version>2.21.0-SNAPSHOT</cxf.artemis-jakarta-client.version>
+        <cxf.artemis-jakarta-client.version>2.21.0</cxf.artemis-jakarta-client.version>
         <cxf.atmosphere.version.range>[2,3.0)</cxf.atmosphere.version.range>
         <cxf.atmosphere.version>2.7.3</cxf.atmosphere.version>
         <cxf.bcprov.version>1.70</cxf.bcprov.version>
@@ -143,7 +143,10 @@
         <cxf.javassist.version>3.27.0-GA</cxf.javassist.version>
         <cxf.jakarta.annotation-api.version>2.1.0-B1</cxf.jakarta.annotation-api.version>
         <cxf.jakarta.ws.rs.version>3.0.0</cxf.jakarta.ws.rs.version>
+        <!-- rls syn version with wfly preview
         <cxf.jaxb.runtime.version>4.0.0-M3</cxf.jaxb.runtime.version>
+        -->
+        <cxf.jaxb.runtime.version>3.0.2</cxf.jaxb.runtime.version>
         <cxf.jaxb.version>3.0.1</cxf.jaxb.version>
         <cxf.jaxb.xjc.version>${cxf.jaxb.runtime.version}</cxf.jaxb.xjc.version>
         <cxf.jaxen.version>1.1.4</cxf.jaxen.version>
